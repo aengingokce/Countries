@@ -9,14 +9,18 @@ import UIKit
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.countryNameListViewModel == nil ? 0 : self.countryNameListViewModel.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let homeCell = homeTableView.dequeueReusableCell(withIdentifier: "HomeCell") as? HomeCell else { return UITableViewCell() }
-        homeCell.lblCountryName.text = "Test"
+        guard let homeCell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as? HomeCell else { return UITableViewCell() }
+        let countryNameViewModel = self.countryNameListViewModel.countryAtIndex(indexPath.row)
+        homeCell.lblCountryName.text = countryNameViewModel.countryNames
         return homeCell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetailsVC", sender: nil)
+    }
     
 }

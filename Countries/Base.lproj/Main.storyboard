@@ -72,6 +72,7 @@
                     <navigationItem key="navigationItem" id="tB6-fn-Hlu"/>
                     <connections>
                         <outlet property="savedTableView" destination="mJV-1h-3YS" id="n0x-Vi-LPu"/>
+                        <segue destination="c6H-M1-eJf" kind="show" identifier="toDetailsVC" id="saP-Oh-I9B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqC-gr-8NK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -137,11 +138,80 @@
                     <navigationItem key="navigationItem" id="GiF-C0-Xn0"/>
                     <connections>
                         <outlet property="homeTableView" destination="Ud9-kI-VMY" id="Kub-O1-PYH"/>
+                        <segue destination="c6H-M1-eJf" kind="show" identifier="toDetailsVC" id="0Ng-Td-ai7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcC-iS-ol2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-33.333333333333336" y="-341.51785714285711"/>
+        </scene>
+        <!--DetailsVC-->
+        <scene sceneID="Kob-Kj-FuM">
+            <objects>
+                <viewController id="c6H-M1-eJf" customClass="DetailsVC" customModule="Countries" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DjZ-21-17P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-ej-avi">
+                                <rect key="frame" x="0.0" y="88" width="411" height="371"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Sjr-PJ-hct">
+                                <rect key="frame" x="20" y="496" width="171" height="69"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7hC-3A-e72">
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="23.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bac-Bb-YZo">
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEb-Wf-2Co">
+                                                <rect key="frame" x="124.5" y="0.0" width="19.5" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-MediumItalic" family="Avenir Next" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Qi-NM-tvc">
+                                        <rect key="frame" x="0.0" y="35.5" width="171" height="33.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="For More Information &gt;">
+                                            <fontDescription key="titleFontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="btnInfoTapped:" destination="c6H-M1-eJf" eventType="touchUpInside" id="iib-Tg-Aes"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a0A-55-MWr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="a0A-55-MWr" firstAttribute="trailing" secondItem="Sar-ej-avi" secondAttribute="trailing" constant="3" id="GTD-Vr-rWW"/>
+                            <constraint firstItem="Sjr-PJ-hct" firstAttribute="top" secondItem="Sar-ej-avi" secondAttribute="bottom" constant="37" id="JOB-Dc-Dnr"/>
+                            <constraint firstItem="Sar-ej-avi" firstAttribute="top" secondItem="a0A-55-MWr" secondAttribute="top" id="eAS-kY-okO"/>
+                            <constraint firstItem="Sar-ej-avi" firstAttribute="leading" secondItem="a0A-55-MWr" secondAttribute="leading" id="hQb-lj-td6"/>
+                            <constraint firstItem="Sjr-PJ-hct" firstAttribute="leading" secondItem="DjZ-21-17P" secondAttribute="leadingMargin" id="vL6-B5-Vbb"/>
+                            <constraint firstItem="a0A-55-MWr" firstAttribute="bottom" secondItem="Sjr-PJ-hct" secondAttribute="bottom" constant="248" id="xq5-ei-lXY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ivj-EE-Km8"/>
+                    <connections>
+                        <outlet property="btnInfo" destination="7Qi-NM-tvc" id="C7W-PD-yND"/>
+                        <outlet property="imgCountryFlag" destination="Sar-ej-avi" id="PIc-Ba-rT9"/>
+                        <outlet property="lblCode" destination="BEb-Wf-2Co" id="cRh-Ow-2vL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0uQ-r1-Cad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1605.7971014492755" y="-19.419642857142858"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="44M-GB-hlI">
@@ -203,6 +273,9 @@
             <point key="canvasLocation" x="-962.31884057971024" y="436.60714285714283"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="saP-Oh-I9B"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
