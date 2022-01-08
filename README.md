@@ -6,4 +6,4 @@ Alamofire and SwiftyJSON were used for parse operations.
 Webkit was used for the redirected page to get more information about the country.  
 
 ## Usage
-Just clone the project and enjoy it :)
+After the clone or download the project, you have to put your API KEY into Constant.swift / key
