@@ -10,10 +10,14 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if let savedCountriesName = UserDefaults.standard.stringArray(forKey: "savedCountriesName") {
+            UserDefaultService.name = savedCountriesName
+        }
+        
+        if let savedCountriesCode = UserDefaults.standard.stringArray(forKey: "savedCountriesCode") {
+            UserDefaultService.code = savedCountriesCode
+        }
         return true
     }
 

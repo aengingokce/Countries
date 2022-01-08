@@ -8,27 +8,37 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import WebKit
 
 class ParserService {
+    var name = [String]()
+    var code = [String]()
     
-    var countryNames = [CountryName]()
+    //public init() {}
     
-    func getCountriesName(host: String, key: String, url: String, comp: @escaping ([CountryName]) -> ()) {
+    public func getCountries(host: String, key: String, url: String) {
         let headers: HTTPHeaders = [
             "x-rapidapi-host": host,
             "x-rapidapi-key": key,
         ]
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
-            if let responseStr = response.value {
-                let jSonResponse = JSON(responseStr)
-                
-                for (_,subJson):(String, JSON) in jSonResponse["data"] {
-                    if let countryName = subJson["name"].string {
-                        self.countryNames.append(CountryName(name: countryName))
-                        comp(self.countryNames)
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON { countries in
+            switch countries.result {
+            case let .success(value):
+                self.name.removeAll(keepingCapacity: false)
+                self.code.removeAll(keepingCapacity: false)
+                let countriesJson = JSON(value)
+                if countriesJson.dictionary?["data"] != nil {
+                    let countriesArray = JSON(countriesJson.dictionary?["data"]! as Any)
+                    for country in countriesArray.array! {
+                        self.name.append(country["name"].stringValue)
+                        self.code.append(country["code"].stringValue)
                     }
                 }
+            case let .failure(err):
+                print(err.localizedDescription)
             }
         }
     }
+    
+
 }

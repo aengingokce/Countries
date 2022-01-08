@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SavedVC-->
+        <!--Countries-->
         <scene sceneID="nyU-i6-MuM">
             <objects>
                 <viewController id="fEY-tA-n7p" customClass="SavedVC" customModule="Countries" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,17 +69,16 @@
                             <constraint firstItem="mJV-1h-3YS" firstAttribute="centerX" secondItem="Kq3-Of-sqD" secondAttribute="centerX" id="WeD-eQ-IUz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tB6-fn-Hlu"/>
+                    <navigationItem key="navigationItem" title="Countries" id="tB6-fn-Hlu"/>
                     <connections>
                         <outlet property="savedTableView" destination="mJV-1h-3YS" id="n0x-Vi-LPu"/>
-                        <segue destination="c6H-M1-eJf" kind="show" identifier="toDetailsVC" id="saP-Oh-I9B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqC-gr-8NK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-52.173913043478265" y="436.60714285714283"/>
         </scene>
-        <!--HomeVC-->
+        <!--Countries-->
         <scene sceneID="4WI-YX-OhB">
             <objects>
                 <viewController id="0VX-3a-9jD" customClass="HomeVC" customModule="Countries" customModuleProvider="target" sceneMemberID="viewController">
@@ -135,29 +134,28 @@
                         <viewLayoutGuide key="safeArea" id="Bra-1i-Cqa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GiF-C0-Xn0"/>
+                    <navigationItem key="navigationItem" title="Countries" id="GiF-C0-Xn0"/>
                     <connections>
                         <outlet property="homeTableView" destination="Ud9-kI-VMY" id="Kub-O1-PYH"/>
-                        <segue destination="c6H-M1-eJf" kind="show" identifier="toDetailsVC" id="0Ng-Td-ai7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcC-iS-ol2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-33.333333333333336" y="-341.51785714285711"/>
         </scene>
-        <!--DetailsVC-->
+        <!--Detail-->
         <scene sceneID="Kob-Kj-FuM">
             <objects>
-                <viewController id="c6H-M1-eJf" customClass="DetailsVC" customModule="Countries" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsVC" id="c6H-M1-eJf" customClass="DetailsVC" customModule="Countries" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DjZ-21-17P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-ej-avi">
-                                <rect key="frame" x="0.0" y="88" width="411" height="371"/>
+                                <rect key="frame" x="0.0" y="88" width="411" height="420"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Sjr-PJ-hct">
-                                <rect key="frame" x="20" y="496" width="171" height="69"/>
+                                <rect key="frame" x="20" y="545" width="171" height="69"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7hC-3A-e72">
                                         <rect key="frame" x="0.0" y="0.0" width="144" height="23.5"/>
@@ -202,16 +200,36 @@
                             <constraint firstItem="a0A-55-MWr" firstAttribute="bottom" secondItem="Sjr-PJ-hct" secondAttribute="bottom" constant="248" id="xq5-ei-lXY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ivj-EE-Km8"/>
+                    <navigationItem key="navigationItem" title="Detail" id="ivj-EE-Km8">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="Jjc-5j-VIh">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="btnBackTapped:" destination="c6H-M1-eJf" id="bQa-7x-EJu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="OQq-7M-r1g">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="JTM-tb-WOe">
+                                <rect key="frame" x="343" y="0.0" width="51" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                <connections>
+                                    <action selector="btnSavedTapped:" destination="c6H-M1-eJf" eventType="touchUpInside" id="A5p-I6-WRn"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="btnInfo" destination="7Qi-NM-tvc" id="C7W-PD-yND"/>
+                        <outlet property="btnSaved" destination="JTM-tb-WOe" id="C2t-9b-YkP"/>
                         <outlet property="imgCountryFlag" destination="Sar-ej-avi" id="PIc-Ba-rT9"/>
                         <outlet property="lblCode" destination="BEb-Wf-2Co" id="cRh-Ow-2vL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0uQ-r1-Cad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605.7971014492755" y="-19.419642857142858"/>
+            <point key="canvasLocation" x="2097" y="109"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="44M-GB-hlI">
@@ -235,6 +253,7 @@
         <!--Home-->
         <scene sceneID="2Yo-yf-Cv3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sFt-iW-LNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="30l-cX-Nul" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="UmO-n9-yII">
                         <color key="badgeColor" systemColor="systemOrangeColor"/>
@@ -243,39 +262,55 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="07j-wX-HzU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="0VX-3a-9jD" kind="relationship" relationship="rootViewController" id="U36-mW-lVT"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sFt-iW-LNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-943.47826086956525" y="-341.51785714285711"/>
         </scene>
         <!--Saved-->
         <scene sceneID="3ZI-9X-gZT">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oOH-VZ-TfP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c6J-lV-qND" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Saved" image="heart" catalog="system" selectedImage="heart.fill" id="3dV-bJ-4If"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rgD-Bx-Qr1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="fEY-tA-n7p" kind="relationship" relationship="rootViewController" id="inH-24-V7t"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oOH-VZ-TfP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-962.31884057971024" y="436.60714285714283"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2ph-EC-bhc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Odh-Yu-Zwr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kKq-nd-STa">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="c6H-M1-eJf" kind="relationship" relationship="rootViewController" id="seZ-qS-ACu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6g-Dd-4VU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1187" y="109"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="saP-Oh-I9B"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>

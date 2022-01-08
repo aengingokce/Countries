@@ -12,12 +12,13 @@ class HomeCell: UITableViewCell {
     @IBOutlet weak var lblCountryName: UILabel!
     @IBOutlet weak var btnSaved: UIButton!
     
+    var actionSave: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     @IBAction func btnSavedTapped(_ sender: UIButton) {
+        actionSave?()
     }
-    
 }

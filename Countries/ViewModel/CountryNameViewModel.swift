@@ -5,7 +5,7 @@
 //  Created by Ahmet Engin Gökçe on 8.01.2022.
 //
 
-import Foundation
+import UIKit
 
 struct CountryNameListViewModel {
     let countryNameList: [CountryName]
@@ -30,4 +30,5 @@ struct CountryNameViewModel {
     var countryNames: String {
         return self.countryName.name
     }
+
 }
